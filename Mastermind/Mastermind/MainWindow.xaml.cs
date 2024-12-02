@@ -18,7 +18,7 @@ namespace Mastermind
         private string[] colors = { "Red", "Yellow", "Orange", "White", "Green", "Blue" };
         private string[] secretCode;
         private List<Brush> ellipseColor = new List<Brush> { Brushes.Red, Brushes.Yellow, Brushes.Orange, Brushes.White, Brushes.Green, Brushes.Blue };
-
+        string[,] highScores = new string[15, 3];
         int attempts = 0;
         int countDown = 10;
         int totalScore = 100;
@@ -85,6 +85,8 @@ namespace Mastermind
 
         private void ControlButton_Click(object sender, RoutedEventArgs e)
         {
+
+            
             List<Ellipse> ellipses = new List<Ellipse> { kleur1, kleur2, kleur3, kleur4 };
             string[] selectedColors = ellipses.Select(e => GetColorName(e.Fill)).ToArray();
 
@@ -142,11 +144,14 @@ namespace Mastermind
                     }
                 }
             }
+
+            
             
             if (correctPosition == 4)
             {
                 if (MessageBox.Show($"Gefeliciteerd! Je hebt de code gekraakt in {attempts} pogingen! Wil je nog eens spelen?", "WINNER", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
                 {
+                    
                     MainWindow newWindow = new MainWindow();
                     Application.Current.MainWindow = newWindow;
                     newWindow.Show();
@@ -373,6 +378,14 @@ namespace Mastermind
         {
            
             StartGame();
+        }
+
+        private void HighscoreMenu_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (string input in highScores)
+            {
+                MessageBox.Show($"{input}");
+            }
         }
     }
 }
