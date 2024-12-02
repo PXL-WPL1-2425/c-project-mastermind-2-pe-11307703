@@ -32,7 +32,7 @@ namespace Mastermind
             StartGame();
             InitializeGame();
             StartCountDown();
-            this.Closing += MainWindow_Closing;
+            //this.Closing += MainWindow_Closing;
         }
 
         private void StartCountDown()
@@ -326,25 +326,25 @@ namespace Mastermind
                 _ => Brushes.Transparent
             };
         }
-        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            MessageBoxResult result = MessageBox.Show("Wilt u het spel vroegtijdig beëindigen?", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.No)
-            {
-                e.Cancel = true;
-            }
-        }
-
-        //private void closeMenu_Click(object sender, RoutedEventArgs e)
+        //private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         //{
-
-        //    if (MessageBox.Show("Close menu?", "Afsluiten", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+        //    MessageBoxResult result = MessageBox.Show("Wilt u het spel vroegtijdig beëindigen?", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Warning);
+        //    if (result == MessageBoxResult.No)
         //    {
-        //        this.Close();
+        //        e.Cancel = true;
         //    }
-
-
         //}
+
+        private void CloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+            //if (MessageBox.Show("Applicatie afsluiten?", "Afsluiten", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            //{
+                this.Close();
+            //}
+
+
+        }
 
 
         private void StartGame()
