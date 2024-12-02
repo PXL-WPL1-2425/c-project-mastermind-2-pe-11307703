@@ -333,16 +333,16 @@ namespace Mastermind
             }
         }
 
-        private void closeMenu_Click(object sender, RoutedEventArgs e)
-        {
+        //private void closeMenu_Click(object sender, RoutedEventArgs e)
+        //{
 
-            if (MessageBox.Show("Close menu?", "Afsluiten", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                this.Close();
-            }
+        //    if (MessageBox.Show("Close menu?", "Afsluiten", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+        //    {
+        //        this.Close();
+        //    }
             
            
-        }
+        //}
 
 
     }
