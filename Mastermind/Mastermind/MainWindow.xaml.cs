@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Eventing.Reader;
+﻿using Microsoft.VisualBasic;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Text;
 using System.Windows;
@@ -28,6 +29,7 @@ namespace Mastermind
         public MainWindow()
         {
             InitializeComponent();
+            StartGame();
             InitializeGame();
             StartCountDown();
             this.Closing += MainWindow_Closing;
@@ -340,10 +342,37 @@ namespace Mastermind
         //    {
         //        this.Close();
         //    }
-            
-           
+
+
         //}
 
 
+        private void StartGame()
+        {
+            try
+            {
+               
+                string name = Interaction.InputBox("Naam speler: ");
+                
+                {
+                    if (name.Contains(null))
+                    {
+                        MessageBox.Show("Geef aub uw naam in", "Foutief", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                        
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Geef een naam in aub");
+            }
+        }
+
+        private void NewGameMenu_Click(object sender, RoutedEventArgs e)
+        {
+           
+            StartGame();
+        }
     }
 }
