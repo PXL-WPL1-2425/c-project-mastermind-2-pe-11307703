@@ -19,7 +19,8 @@ namespace Mastermind
         private string[] secretCode;
         private List<Brush> ellipseColor = new List<Brush> { Brushes.Red, Brushes.Yellow, Brushes.Orange, Brushes.White, Brushes.Green, Brushes.Blue };
         string[,] highScores = new string[15, 3];
-        int attempts = 0;
+        int attempts;
+        int maxAttempts;
         int countDown = 10;
         int totalScore = 100;
 
@@ -55,9 +56,9 @@ namespace Mastermind
             timerCounter.Content = $"{countDown}";
             if (countDown == 0)
             {
-                attempts++;
+                maxAttempts++;
                 timer.Stop();
-                if (attempts >= 10)
+                if (maxAttempts > 20 || maxAttempts < 3 )
                 {
                     GameOver();
                     return;
@@ -99,7 +100,7 @@ namespace Mastermind
             attempts++;
             UpdateTitle();
 
-            if (attempts >= 10)
+            if (attempts >= maxAttempts)
             {
                 GameOver();
                 return;
@@ -385,6 +386,22 @@ namespace Mastermind
             foreach (string input in highScores)
             {
                 MessageBox.Show($"{input}");
+            }
+        }
+
+        private void AttemptsMenu_Click(object sender, RoutedEventArgs e)
+        {
+            AttemptsMenu();
+        }
+
+        private void AttemptsMenu()
+        {
+            string attemptsInput = Interaction.InputBox("Geef aantal pogingen in tussen 3 en 20:");
+            int maxAttempts = int.Parse(attemptsInput);
+
+            if (maxAttempts < 3 || maxAttempts > 20)
+            {
+                MessageBox.Show("Geef enkel getallen tussen 3 en 20!");
             }
         }
     }

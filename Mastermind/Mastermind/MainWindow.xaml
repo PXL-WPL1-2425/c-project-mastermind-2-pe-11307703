@@ -20,7 +20,7 @@
                     <MenuItem Header="Afsluiten" Name="closeMenu" Click="CloseMenu_Click"/>
                 </MenuItem>
                 <MenuItem Header="Instellingen">
-                    <MenuItem Header="Aantal pogingen" Name="attemptsMenu" />
+                    <MenuItem Header="Aantal pogingen" Name="attemptsMenu" Click="AttemptsMenu_Click" />
                 </MenuItem>
             </Menu>
         </DockPanel>
